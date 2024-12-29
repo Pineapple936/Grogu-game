@@ -1,21 +1,22 @@
 import pygame
+from sys import exit
 
 from .objects import *
 
 class Game:
-    def __init__(self, width, height):
-        pygame.init()
-        self.__screen = pygame.display.set_mode((width, height))
+    def __init__(self, screen):
+        self.__screen = screen
+        self.__width, self.__height = self.__screen.get_size()
         self.__clock = pygame.time.Clock()
         self.__FPS = 30
         self.__lose = False
 
-        self.__background = Background(width, height)
-        self.__ground = Ground(width, height)
-        self.__cloud = Cloud(width, height)
-        self.__hero = Hero(width, height, self.__ground.y)
-        self.__enemies = Enemies(width, height, self.__ground.y)
-        self.__score = Score(width)
+        self.__background = Background(self.__width, self.__height)
+        self.__ground = Ground(self.__width, self.__height)
+        self.__cloud = Cloud(self.__width, self.__height)
+        self.__hero = Hero(self.__width, self.__height, self.__ground.y)
+        self.__enemies = Enemies(self.__width, self.__height, self.__ground.y)
+        self.__score = Score(self.__width)
 
     def run(self):
         while not self.__lose:
@@ -23,11 +24,16 @@ class Game:
             self.__move()
             self.__logic()
             self.__draw()
+        self.__score.add_score_in_file()
 
     def __check_events(self):
         for events in pygame.event.get():
             if events.type == pygame.QUIT:
-                self.__lose = True
+                self.__exitFromGame()
+
+    def __exitFromGame(self):
+        pygame.quit()
+        exit()
 
     def __move(self):
         self.__background.move()
@@ -59,8 +65,3 @@ class Game:
 
         pygame.display.flip()
         self.__clock.tick(self.__FPS)
-
-
-if __name__ == "__main__":
-    game = Game(900, 500)
-    game.run()
