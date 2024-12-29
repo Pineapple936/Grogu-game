@@ -6,6 +6,8 @@ from .game import Game
 class Menu:
     def __init__(self, widthScreen, heightScreen):
         pygame.init()
+        pygame.display.set_caption("Run, Grogu, run")
+        pygame.display.set_icon(pygame.image.load("image/icon.png"))
         self.__widthScreen = widthScreen
         self.__heightScreen = heightScreen
         self.__screen = pygame.display.set_mode((self.__widthScreen, self.__heightScreen))
