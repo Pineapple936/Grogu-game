@@ -10,10 +10,10 @@ class Menu:
         pygame.display.set_icon(pygame.image.load("image/icon.png"))
         self.__widthScreen = widthScreen
         self.__heightScreen = heightScreen
-        self.__screen = pygame.display.set_mode((self.__widthScreen, self.__heightScreen))
+        self.__screen = pygame.display.set_mode((self.__widthScreen, self.__heightScreen), pygame.RESIZABLE)
         self.__clockApp = pygame.time.Clock()
         self.__FPS = 30
-        self.__runMenu = False
+        self.__runMenu = True
 
         self.__imageBackground = pygame.transform.scale(pygame.image.load("image/background.png"), (self.__widthScreen, self.__heightScreen))
 
@@ -39,6 +39,8 @@ class Menu:
                 self.__exitFromApp()
             elif events.type == pygame.KEYDOWN:
                 self.__runMenu = False
+            elif events.type == pygame.VIDEORESIZE:
+                self.__init__(*self.__screen.get_size())
 
     def __exitFromApp(self):
         pygame.quit()
