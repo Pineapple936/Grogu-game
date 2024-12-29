@@ -35,7 +35,7 @@ class Menu:
 
     def __check_events(self):
         for events in pygame.event.get():
-            if events.type == pygame.QUIT:
+            if events.type == pygame.QUIT  or (events.type == pygame.KEYDOWN and events.key == pygame.K_ESCAPE):
                 self.__exitFromApp()
             elif events.type == pygame.KEYDOWN:
                 self.__runMenu = False

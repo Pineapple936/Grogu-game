@@ -28,7 +28,7 @@ class Game:
 
     def __check_events(self):
         for events in pygame.event.get():
-            if events.type == pygame.QUIT:
+            if events.type == pygame.QUIT or (events.type == pygame.KEYDOWN and events.key == pygame.K_ESCAPE):
                 self.__exitFromGame()
 
     def __exitFromGame(self):
