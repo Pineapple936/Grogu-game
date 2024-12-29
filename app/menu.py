@@ -18,7 +18,7 @@ class Menu:
         self.__imageBackground = pygame.transform.scale(pygame.image.load("image/background.png"), (self.__widthScreen, self.__heightScreen))
 
         pygame.font.init()
-        self.__font = pygame.font.SysFont('Comic Sans MS', self.__widthScreen // 30)
+        self.__font = pygame.font.Font("font/Monocraft.otf", self.__widthScreen // 30)
         self.__infoForStart = self.__font.render("To start the game, press any button", True, (255, 255, 255))
         self.__scoreInMenu = "Your score: {}"
 

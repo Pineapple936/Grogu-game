@@ -3,7 +3,7 @@ import pygame
 class Score:
     def __init__(self, widthScreen):
         pygame.font.init()
-        self.__font = pygame.font.SysFont('Comic Sans MS', widthScreen // 30)
+        self.__font = pygame.font.Font("font/Monocraft.otf", widthScreen // 30)
         self.__stepForCounter = 0
         self.__counterPoints = 0
 
