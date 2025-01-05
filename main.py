@@ -1,8 +1,8 @@
 from app import *
 
 def main():
-    App = Menu(900, 500)
-    App.run()
+    game = Game(900, 500)
+    game.run()
 
 if __name__ == "__main__":
     main()
