@@ -7,6 +7,7 @@ class Game:
         pygame.init()
         pygame.display.set_caption("Run, Grogu, run")
         pygame.display.set_icon(pygame.image.load("image/icon.png"))
+        pygame.mouse.set_visible(False)
         self.__screen = pygame.display.set_mode((widthScreen, heightScreen), pygame.RESIZABLE)
 
     def run(self):
