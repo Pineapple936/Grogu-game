@@ -32,11 +32,19 @@ class Gameplay:
             if events.type == pygame.QUIT or (events.type == pygame.KEYDOWN and events.key == pygame.K_ESCAPE):
                 self.__exitFromGame()
             elif events.type == pygame.VIDEORESIZE:
-                self.__initObjects(*self.__screen.get_size())
+                self.__resizeScreen()
 
     def __exitFromGame(self):
         pygame.quit()
         exit()
+
+    def __resizeScreen(self):
+        self.__background.resizeScreen(*self.__screen.get_size())
+        self.__ground.resizeScreen(*self.__screen.get_size())
+        self.__cloud.resizeScreen(*self.__screen.get_size())
+        self.__hero.resizeScreen(*self.__screen.get_size(), self.__ground.y)
+        self.__enemies.resizeScreen(*self.__screen.get_size(), self.__ground.y)
+        self.__score.resizeScreen(self.__screen.get_width())
 
     def __move(self):
         self.__background.move()

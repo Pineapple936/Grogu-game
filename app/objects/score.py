@@ -7,6 +7,9 @@ class Score:
         self.__stepForCounter = 0
         self.__counterPoints = 0
 
+    def resizeScreen(self, widthScreen):
+        self.__font = pygame.font.Font("font/Monocraft.otf", widthScreen // 30)
+
     def logic(self):
         self.__stepForCounter += 1
         if self.__stepForCounter == 10:

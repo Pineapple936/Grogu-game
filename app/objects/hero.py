@@ -18,6 +18,23 @@ class Hero:
         self.__verticalVelocity = heightScreen // 120
         self.__animCount = 0
 
+    def resizeScreen(self, widthScreen, heightScreen, groundY):
+        self.__images = {
+            "run": (
+                pygame.transform.scale(pygame.image.load("image/grogu/grogu_run_1.png"), (widthScreen // 10, heightScreen // 10)),
+                pygame.transform.scale(pygame.image.load("image/grogu/grogu_run_2.png"), (widthScreen // 10, heightScreen // 10))),
+            "jump": pygame.transform.scale(pygame.image.load("image/grogu/grogu_jump.png"), (widthScreen // 10, heightScreen // 10))
+        }
+        self.__image = pygame.transform.scale(self.__image, (widthScreen // 10, heightScreen // 10))
+        if self.__rect.y == self.__defaultY:
+            self.__defaultY = groundY - self.__image.get_height()
+            self.__rect.y = self.__defaultY
+        else:
+            self.__defaultY = groundY - self.__image.get_height()
+        self.__rect.width, self.__rect.height = self.__image.get_size()
+        self.__defaultJumpSpeed = heightScreen // 12
+        self.__verticalVelocity = heightScreen // 120
+
     def __check_button(self, keys):
         if keys[pygame.K_SPACE] and not self.__jumpStatus:
             self.__jumpStatus = True

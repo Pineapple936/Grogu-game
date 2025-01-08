@@ -6,6 +6,11 @@ class Background:
         self.__rect = self.__image.get_rect()
         self.__speed = widthScreen // 70
 
+    def resizeScreen(self, widthScreen, heightScreen):
+        self.__image = pygame.transform.scale(self.__image, (widthScreen, heightScreen))
+        self.__rect.width, self.__rect.height = self.__image.get_size()
+        self.__speed = widthScreen // 70
+
     def move(self):
         self.__rect.x -= self.__speed
 

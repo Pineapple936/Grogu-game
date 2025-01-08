@@ -12,8 +12,20 @@ class Enemies:
         self.__image = self.__images[randint(0, len(self.__images) - 1)]
         self.__rect = self.__image.get_rect()
         self.__startX = widthScreen
-        self.__rect.y = groundY - self.__image.get_height()
+        self.__rect.y = groundY - self.__rect.height
         self.__rect.x = self.__startX
+        self.__speed = widthScreen // 70
+
+    def resizeScreen(self, widthScreen, heightScreen, groundY):
+        self.__images = (
+        pygame.transform.scale(pygame.image.load("image/enemies/trooper.png"), (widthScreen // 10, heightScreen // 10)),
+        pygame.transform.scale(pygame.image.load("image/enemies/droid.png"), (widthScreen // 10, heightScreen // 10)),
+        pygame.transform.scale(pygame.image.load("image/enemies/gideon.png"), (widthScreen // 10, heightScreen // 10)),
+        pygame.transform.scale(pygame.image.load("image/enemies/jawa.png"), (widthScreen // 10, heightScreen // 10)))
+        self.__image = pygame.transform.scale(self.__image, (widthScreen // 10, heightScreen // 10))
+        self.__rect.width, self.__rect.height = self.__images[0].get_size()
+        self.__startX = widthScreen
+        self.__rect.y = groundY - self.__rect.height
         self.__speed = widthScreen // 70
 
     def move(self):
