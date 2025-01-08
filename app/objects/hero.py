@@ -60,10 +60,10 @@ class Hero:
             self.__image = self.__images["jump"]
         else:
             self.__animCount += 1
-            if self.__animCount // 5 == 1 or self.__animCount // 5 == 2:
-                self.__image = self.__images["run"][self.__animCount // 5 - 1]
+            if self.__animCount // 10 == 1 or self.__animCount // 10 == 2:
+                self.__image = self.__images["run"][self.__animCount // 10 - 1]
 
-            if self.__animCount == 10:
+            if self.__animCount == 20:
                 self.__animCount = 0
 
 
