@@ -11,7 +11,7 @@ class Hero:
         self.__image = self.__images["run"][0]
         self.__defaultY = groundY - self.__image.get_height()
         self.__rect = self.__image.get_rect()
-        self.__rect.y = self.__defaultY
+        self.__rect.x, self.__rect.y = widthScreen // 10, self.__defaultY
         self.__jumpStatus = False
         self.__defaultJumpSpeed = heightScreen // 12
         self.__jumpSpeed = self.__defaultJumpSpeed
