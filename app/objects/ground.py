@@ -10,7 +10,7 @@ class Ground:
         self.__rectHorizon = self.__imageHorizon.get_rect()
         self.__rectHorizon.y = self.__rectGround.y - self.__rectHorizon.height
 
-        self.__speed = widthScreen // 70
+        self.__speed = widthScreen // 200
 
     def resizeScreen(self, widthScreen, heightScreen):
         self.__imageGround = pygame.transform.scale(pygame.image.load("image/world/ground.png"), (widthScreen, heightScreen // 4))
@@ -21,7 +21,7 @@ class Ground:
         self.__rectHorizon.width, self.__rectHorizon.height = self.__imageHorizon.get_size()
         self.__rectHorizon.y = self.__rectGround.y - self.__rectHorizon.height
 
-        self.__speed = widthScreen // 70
+        self.__speed = widthScreen // 200
 
 
 
@@ -30,7 +30,7 @@ class Ground:
         self.__rectGround.x -= self.__speed
 
     def logic(self):
-        if self.__rectHorizon.x < -self.__rectHorizon.width:
+        if self.__rectHorizon.x <= -self.__rectHorizon.width:
             self.__rectHorizon.x = 0
             self.__rectGround.x = 0
 

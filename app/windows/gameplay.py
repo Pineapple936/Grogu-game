@@ -7,7 +7,7 @@ class Gameplay:
     def __init__(self, screen):
         self.__screen = screen
         self.__clock = pygame.time.Clock()
-        self.__FPS = 30
+        self.__FPS = 60
         self.__lose = False
         self.__initObjects(*self.__screen.get_size())
 

@@ -14,7 +14,7 @@ class Enemies:
         self.__startX = widthScreen
         self.__rect.y = groundY - self.__rect.height
         self.__rect.x = self.__startX
-        self.__speed = widthScreen // 70
+        self.__speed = widthScreen // 100
 
     def resizeScreen(self, widthScreen, heightScreen, groundY):
         self.__images = (
@@ -26,7 +26,7 @@ class Enemies:
         self.__rect.width, self.__rect.height = self.__images[0].get_size()
         self.__startX = widthScreen
         self.__rect.y = groundY - self.__rect.height
-        self.__speed = widthScreen // 70
+        self.__speed = widthScreen // 100
 
     def move(self):
         self.__rect.x -= self.__speed

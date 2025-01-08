@@ -12,7 +12,7 @@ class Score:
 
     def logic(self):
         self.__stepForCounter += 1
-        if self.__stepForCounter == 10:
+        if self.__stepForCounter == 20:
             self.__stepForCounter = 0
             self.__counterPoints += 1
 

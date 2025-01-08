@@ -12,7 +12,7 @@ class Cloud:
         self.__rect = self.__images[0].get_rect()
         self.__defaultX = widthScreen
         self.__rect.x = self.__defaultX
-        self.__speed = widthScreen // 70
+        self.__speed = widthScreen // 300
 
     def resizeScreen(self, widthScreen, heightScreen):
         self.__images = (
@@ -22,7 +22,7 @@ class Cloud:
         self.__image = pygame.transform.scale(self.__image, (widthScreen // 5, heightScreen // 10))
         self.__rect.width, self.__rect.height = self.__image.get_size()
         self.__defaultX = widthScreen
-        self.__speed = widthScreen // 70
+        self.__speed = widthScreen // 300
 
     def move(self):
         self.__rect.x -= self.__speed

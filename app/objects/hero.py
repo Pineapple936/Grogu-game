@@ -15,7 +15,7 @@ class Hero:
         self.__jumpStatus = False
         self.__defaultJumpSpeed = heightScreen // 12
         self.__jumpSpeed = self.__defaultJumpSpeed
-        self.__verticalVelocity = heightScreen // 120
+        self.__verticalVelocity = heightScreen // 160
         self.__animCount = 0
 
     def resizeScreen(self, widthScreen, heightScreen, groundY):
@@ -33,7 +33,7 @@ class Hero:
             self.__defaultY = groundY - self.__image.get_height()
         self.__rect.width, self.__rect.height = self.__image.get_size()
         self.__defaultJumpSpeed = heightScreen // 12
-        self.__verticalVelocity = heightScreen // 120
+        self.__verticalVelocity = heightScreen // 160
 
     def __check_button(self, keys):
         if keys[pygame.K_SPACE] and not self.__jumpStatus:
