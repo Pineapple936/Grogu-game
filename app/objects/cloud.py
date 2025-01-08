@@ -8,34 +8,44 @@ class Cloud:
             pygame.transform.scale(pygame.image.load("image/world/cloud_1.png"), (widthScreen // 5, heightScreen // 10)),
             pygame.transform.scale(pygame.image.load("image/world/cloud_2.png"), (widthScreen // 5, heightScreen // 10))
         )
-        self.__image = self.__images[randint(0, len(self.__images) - 1)]
-        self.__rect = self.__images[0].get_rect()
+        self.__clouds = list()
         self.__defaultX = widthScreen
-        self.__rect.x = self.__defaultX
         self.__speed = widthScreen // 300
+
+    def __createCloud(self):
+        if randint(0, 100) > 99:
+            self.__clouds.append([self.__images[randint(0, len(self.__images) - 1)], self.__generatePosition()])
+
+    def __generatePosition(self):
+        return [self.__defaultX, randint(0, self.__images[0].get_height())]
+
+    def __deleteCloud(self):
+        for cloud in self.__clouds:
+            if cloud[1][0] <= -cloud[0].get_width():
+                self.__clouds.remove(cloud)
 
     def resizeScreen(self, widthScreen, heightScreen):
         self.__images = (
             pygame.transform.scale(pygame.image.load("image/world/cloud_1.png"), (widthScreen // 5, heightScreen // 10)),
             pygame.transform.scale(pygame.image.load("image/world/cloud_2.png"), (widthScreen // 5, heightScreen // 10))
         )
-        self.__image = pygame.transform.scale(self.__image, (widthScreen // 5, heightScreen // 10))
-        self.__rect.width, self.__rect.height = self.__image.get_size()
+        self.__resizeClouds()
         self.__defaultX = widthScreen
         self.__speed = widthScreen // 300
 
+    def __resizeClouds(self):
+        __width, __height = self.__images[0].get_size()
+        for cloud in self.__clouds:
+            cloud[0] = pygame.transform.scale(cloud[0], (__width, __height))
+
     def move(self):
-        self.__rect.x -= self.__speed
-
-    def __create_cloud(self):
-        if randint(0, 100) > 90:
-            self.__rect.x = self.__defaultX
-            self.__image = self.__images[randint(0, len(self.__images) - 1)]
-
+        for cloud in self.__clouds:
+            cloud[1][0] -= self.__speed
 
     def logic(self):
-        if self.__rect.x < -self.__rect.width:
-            self.__create_cloud()
+        self.__createCloud()
+        self.__deleteCloud()
 
     def draw(self, screen):
-        screen.blit(self.__image, self.__rect)
+        for cloud in self.__clouds:
+            screen.blit(cloud[0], cloud[1])
