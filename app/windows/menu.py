@@ -38,8 +38,13 @@ class Menu:
         self.__initFont()
 
     def __exitFromGame(self):
+        self.__deleteScore()
         pygame.quit()
         exit()
+
+    def __deleteScore(self):
+        with open("score/score.txt", "w") as file:
+            file.write("0")
 
     def __drawScreen(self):
         self.__drawBackground()

@@ -35,8 +35,13 @@ class Gameplay:
                 self.__resizeScreen()
 
     def __exitFromGame(self):
+        self.__delete_score()
         pygame.quit()
         exit()
+
+    def __delete_score(self):
+        with open("score/score.txt", "w") as file:
+            file.write("0")
 
     def __resizeScreen(self):
         self.__background.resizeScreen(*self.__screen.get_size())
